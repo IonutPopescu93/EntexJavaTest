@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table method="get" th:action="@{/users}" th:object="${userDto}" >
+    <thead>
+    <tr>
+        <th scope="col">Nume</th>
+        <th scope="col">Email</th>
+        <th scope="col">Judet</th>
+        <th scope="col">Localitate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="userDto : ${usersDto}">
+        <td><a th:text="${userDto.username}"></a></td>
+        <td><a th:text="${userDto.email}"></a></td>
+        <td><a th:text="${userDto.county}"></a></td>
+        <td><a th:text="${userDto.locality}"></a></td>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

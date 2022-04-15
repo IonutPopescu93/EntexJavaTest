@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="card">
+        <form class="px-md-0" method="post" th:action="@{/authenticate}" th:object="${jwtRequest}>
+
+            <!-- form header -->
+            <div>
+                <h2 class="d-flex justify-content-center mb-4 pb-2 pb-md-0 mb-md-0 px-md-2">Sign in</h2>
+            </div>
+
+            <!-- email input  -->
+            <div class="form-outline mb-1">
+                <label class="form-label" th:field="*{username}" type="text">Username</label>
+                <input class="form-control" id="username"  type="text"/>
+            </div>
+
+            <!-- password input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="password"  th:field="*{password}" type="password">Password</label>
+                <input class="form-control" id="password"  type="password"/>
+            </div>
+
+            <!-- form actions  -->
+            <div class="d-grid gap-2 col-6 mx-auto form-outline mb-2">
+                <!-- cancel button -->
+                <a class="btn btn-outline-secondary"  type="button">Cancel</a>
+
+                <!-- sign up button -->
+                <button class="btn btn-outline-success" type="submit">Sign in</button>
+            </div>
+
+
+
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
