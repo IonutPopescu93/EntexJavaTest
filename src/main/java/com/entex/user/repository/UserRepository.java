@@ -7,5 +7,4 @@ public interface UserRepository  extends JpaRepository<UserDao, Long> {
 
     UserDao findByUsername(String username);
 
-    UserDao findByEmail(String email);
 }

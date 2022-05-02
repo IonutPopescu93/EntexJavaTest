@@ -7,8 +7,10 @@ public class UserDao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", unique = true)
     private Long id;
     private String email;
+    @Column(name = "username", unique=true)
     private String username;
     private String locality;
     private String county;

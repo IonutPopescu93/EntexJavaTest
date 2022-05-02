@@ -45,8 +45,12 @@ public class JwtAuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void saveUser(@RequestBody UserDto user) throws Exception {
+    public String saveUser(@RequestBody UserDto user) throws Exception {
+        if (userService.findUserByUsername(user.getUsername()) != null){
+            return "User already exist!";
+        }
         userService.saveUser(user);
+        return "User " + user.getUsername() + " registered successfully!";
     }
     private void authenticate(String username, String password) throws Exception {
         try {

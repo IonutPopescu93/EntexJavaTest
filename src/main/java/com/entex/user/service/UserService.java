@@ -1,5 +1,6 @@
 package com.entex.user.service;
 
+import com.entex.user.controller.exception.ResourceNotFoundException;
 import com.entex.user.dto.UserDto;
 import com.entex.user.mapper.UserMapper;
 import com.entex.user.model.UserDao;
@@ -36,6 +37,23 @@ public class UserService {
         return userRepository.findAll().stream()
                 .map(user -> userMapper.map(user))
                 .collect(Collectors.toList());
+    }
+
+    public UserDao findUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public void update(Long id, UserDto userDto) {
+        userRepository.findById(id)
+                .map(user -> userMapper.update(user, userDto))
+                .map(updatedUser -> userRepository.save(updatedUser))
+                .orElseThrow(() -> {
+                    throw new ResourceNotFoundException("user not found");
+                });
     }
 }
 
